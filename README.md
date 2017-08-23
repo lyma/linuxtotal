@@ -1,2 +1,2 @@
 # linuxtotal
-Arquivos do LinuxTotal, o Bot EggDrop mais ranzinza do mundo.
+Arquivos em TCL do LinuxTotal, o Bot EggDrop mais ranzinza do mundo...
