@@ -1,0 +1,14 @@
+#Dynamic Channel File for LinuxTotal (eggdrop v1.8.2+RC1) -- written Mon Dec 21 15:44:09 2020
+
+channel add #Lymas { chanmode +tn idle-kick 0 stopnethack-mode 0 revenge-mode 0 need-op {} need-invite {} need-key {} need-unban {} need-limit {} flood-chan 15:60 flood-ctcp 3:60 flood-join 5:60 flood-kick 3:10 flood-deop 3:10 flood-nick 5:60 aop-delay 5:30 ban-type 3 ban-time 120 exempt-time 60 invite-time 60 -enforcebans +dynamicbans +userbans -autoop -autohalfop -bitch +greet +protectops -protecthalfops -protectfriends +dontkickops -statuslog -revenge -revengebot -autovoice -secret +shared +cycle +seen -inactive +dynamicexempts +userexempts +dynamicinvites +userinvites -nodesynch -static }
+channel set #Lymas +udef-flag-google
+channel set #Lymas +udef-flag-seend
+channel add ##php-br { chanmode +tn idle-kick 0 stopnethack-mode 0 revenge-mode 0 need-op {} need-invite {} need-key {} need-unban {} need-limit {} flood-chan 15:60 flood-ctcp 3:60 flood-join 5:60 flood-kick 3:10 flood-deop 3:10 flood-nick 5:60 aop-delay 5:30 ban-type 3 ban-time 120 exempt-time 60 invite-time 60 -enforcebans +dynamicbans +userbans -autoop -autohalfop -bitch +greet +protectops -protecthalfops -protectfriends +dontkickops -statuslog -revenge -revengebot -autovoice -secret +shared +cycle +seen -inactive +dynamicexempts +userexempts +dynamicinvites +userinvites -nodesynch -static }
+channel set ##php-br +udef-flag-google
+channel set ##php-br +udef-flag-seend
+channel add #phpavancado { chanmode +tn idle-kick 0 stopnethack-mode 0 revenge-mode 0 need-op {} need-invite {} need-key {} need-unban {} need-limit {} flood-chan 15:60 flood-ctcp 3:60 flood-join 5:60 flood-kick 3:10 flood-deop 3:10 flood-nick 5:60 aop-delay 5:30 ban-type 3 ban-time 120 exempt-time 60 invite-time 60 -enforcebans +dynamicbans +userbans -autoop -autohalfop -bitch +greet +protectops -protecthalfops -protectfriends +dontkickops -statuslog -revenge -revengebot -autovoice -secret +shared +cycle +seen -inactive +dynamicexempts +userexempts +dynamicinvites +userinvites -nodesynch -static }
+channel set #phpavancado +udef-flag-google
+channel set #phpavancado +udef-flag-seend
+channel add #LinuxTotal { chanmode +tn idle-kick 0 stopnethack-mode 0 revenge-mode 0 need-op {} need-invite {} need-key {} need-unban {} need-limit {} flood-chan 15:60 flood-ctcp 3:60 flood-join 5:60 flood-kick 3:10 flood-deop 3:10 flood-nick 5:60 aop-delay 5:30 ban-type 3 ban-time 120 exempt-time 60 invite-time 60 -enforcebans +dynamicbans +userbans -autoop -autohalfop -bitch +greet +protectops -protecthalfops -protectfriends +dontkickops -statuslog -revenge -revengebot -autovoice -secret +shared +cycle +seen -inactive +dynamicexempts +userexempts +dynamicinvites +userinvites -nodesynch -static }
+channel set #LinuxTotal -udef-flag-google
+channel set #LinuxTotal -udef-flag-seend
