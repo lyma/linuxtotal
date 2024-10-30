@@ -1,0 +1,14 @@
+Estes são meus comandos:
+
+!google [.google.country.code] [define:] <search terms> <1+1> <1 cm in ft> <weather city|zip> <??? airport>
+!images [.google.country.code] <search terms>               
+!fight <word(s) one> vs <word(s) two>                       
+!trans region@region <text> #Para traduzir algo                                 
+!wikipedia [.2-digit-country-code] <search terms>[#subtag]  
+!piada para contar uma piada! (dãããã)
+!frase Fala uma frase/citacao famosa ou não...
+!horoscopo <signo> Fala o  horoscopo do dia para o signo informado. Não acredite em tudo o que lê. Previsões diárias.
+!php ou !func ou ainda !function Para consultar ums função em PHP
+!seen <nome> #Para ver a ultima vez eu vi um determinado nick na rede.
+!ping <IP ou host> ou .ping <IP ou host> #Efetua um ping ICMP, não o /PING do IRC
+Lembre-se que todos os comandos são experimentais e oferecidos como ajuda, sem garantia de funcionamento.

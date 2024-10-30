@@ -1,0 +1,107 @@
+# Max results.
+set horoscopo_config(max) 5
+
+# Deny channels
+set horoscopo_config(deny_chans) {
+}
+
+# Version
+set horoscopo_config(ver) 0.2
+
+# Include packages.
+package require http
+package require ncgi
+package require tls
+
+
+# Public command.
+bind pub - !horoscopo pub_horoscopo
+
+proc pub_horoscopo { nick uhost hand chan arg } {
+	global horoscopo_config
+
+	if { [lsearch [string tolower $horoscopo_config(deny_chans)] [string tolower $chan]] != "-1" } {
+    	return 0
+  	}
+
+  	if { $arg == "" } {
+    	putserv "NOTICE $nick :Uso: !horoscopo <nome do signo sem acentos>"
+	    return 0
+  	}
+
+	process_horoscopo_page $chan $nick $arg
+}
+
+
+
+proc process_horoscopo_page { chan nick search } {
+	regsub -all " " $search "+" search
+	set search [string map {_ -} $search]
+	set url "https://www.terra.com.br/vida-e-estilo/horoscopo/signos/$search/"
+	set tidy [process_request_horoscopo $url]
+#	set sig ""
+#	foreach row $tidy {
+#		# Get horoscope :) 
+#		if { [regexp -nocase -- {<div id=\"article_embed_text1\" class=\"horoscope_text\">.*} $row] } {
+#			putserv "PRIVMSG $chan :entrei no IF $row"
+#			regexp -nocase -- {<div id=\"article_embed_text1\" class=\"horoscope_text\">(.*)</p>} $row all sig 
+#			set sig [striptags $sig]
+#		}
+#	}
+#"
+#	if { $sig != "" } {
+#		putserv "PRIVMSG $chan :$sig"
+#	} else {
+#		putserv "PRIVMSG $chan :Não encontrei previsao para este signo... misterios da vida!"
+#	}
+}
+
+proc striptags str {
+    regsub -all {<.*?>} $str {} str
+    return $str
+}
+
+# Process request
+proc process_request_horoscopo { pagina } {
+
+	set http [http::config -useragent mozilla]
+	set http [http::geturl $pagina -timeout [expr 1000 * 10]]
+	set html [http::data $http]
+	http::cleanup $http ;
+	regexp {<div id=\"article_embed_text1\" class=\"horoscope_text\">(.*)</p>} $html horoscopo
+#	regsub -all "<span class=\"txt_2_10\"><b></b><br>" $horoscopo "" horoscopo
+#	regsub -all "<br></span>" $horoscopo "" horoscopo
+	putserv "PRIVMSG $nick :[string toupper $arg]: $horoscopo"
+
+
+
+#    http::config -useragent "Mozilla/4.75 (X11; U; Linux 2.2.17; i586; Nav)"
+#    http::register https 443 tls::socket
+#    set token [http::geturl $url -timeout 30000]
+#    set status [http::status $token]
+#    set data [http::data $token]
+#    http::cleanup $token
+#    http::unregister https
+
+#    set tmp_file "/tmp/tmp_file_horoscopo_[expr int(rand()*32768)].[pid].xml"
+#    set fp [open $tmp_file "w"]
+#    puts -nonewline $fp $data
+#    close $fp
+
+#    set tidy_command "tidy -qm -w 0 -utf8 -asxml $tmp_file 2> /dev/null"
+#    catch { eval exec $tidy_command }
+#
+#    set fp [open $tmp_file "r"]
+#    set tidy [read $fp]
+#    set tidy [split $tidy "\n"]
+#    catch { close $fp }
+
+    #file delete -force -- $tmp_file
+
+    return $tidy
+}
+
+
+# Loaded.
+putlog "horoscopo.tcl \[ OK \]"
+putlog "Lyma Horoscopo Scraper $horoscopo_config(ver) - Loaded"
